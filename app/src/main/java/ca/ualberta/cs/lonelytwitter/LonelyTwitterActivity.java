@@ -23,10 +23,21 @@ public class LonelyTwitterActivity extends Activity {
 	private static final String FILENAME = "file.sav";
 	private EditText bodyText;
 	private ListView oldTweetsList;
+	private ArrayList<Object> tweetList; // Object is the class of all objects
 	
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+		Tweetable tweet;
+
+		try {
+			tweet = new ImportantTweet("Longer than 10 characters ");
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+
+		tweet.isImportant();
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
