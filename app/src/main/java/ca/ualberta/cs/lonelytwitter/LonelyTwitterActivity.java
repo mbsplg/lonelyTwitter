@@ -24,7 +24,7 @@ import android.widget.ListView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-public class LonelyTwitterActivity extends Activity {
+public class LonelyTwitterActivity extends Activity implements MyObserver{
 
 	private static final String FILENAME = "file.sav";
 	private EditText bodyText;
@@ -106,5 +106,9 @@ public class LonelyTwitterActivity extends Activity {
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+	public void myNotify(MyObservable observable) {
+		adapter.notifyDataSetChanged();
 	}
 }
